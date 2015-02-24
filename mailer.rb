@@ -27,7 +27,7 @@ end
 
 get '/mailer*' do
   result = Pony.mail(:to => "ecxmtl@gmail.com",
-                :subject => "Thanks for signing my guestbook, ",
+                :subject => "Make a booking now",
                 :html_body => erb(:template))
   puts result
   
