@@ -29,11 +29,19 @@ get '/' do
 end
 
 get '/mailer*' do
-  Pony.mail(:to => "ecxmtl@gmail.com", :subject => "Make a booking now", :html_body => erb(:template))
+  @destination = params[:destination]
+  @origin = params[:origin]
+  @departure_date = params[:departure_date]
+  @return_date = params[:return_date]
+  @cabin = params[:cabin]
+  
+  Pony.mail(:to => "ecxmtl@gmail.com", 
+            :subject => "Make a booking now - from #{@origin} to #{@destination}", 
+            :html_body => erb(:template))
 end
 
 post '/mailer' do
-  @destination = parmas[:destination]
+  @destination = params[:destination]
   @origin = params[:origin]
   @departure_date = params[:departure_date]
   @return_date = params[:return_date]
