@@ -35,9 +35,9 @@ get '/mailer*' do
   @date_return = params[:date_return].gsub('-','')
   @cabin = params[:cabin]
   @trip_type = params[:trip_type] || "R"
-  @pax_adult = params[:pax_adult]
-  @pax_child = params[:pax_child]
-  @pax_infant = params[:pax_infant]
+  @pax_adult = params[:pax_adult].to_i
+  @pax_child = params[:pax_child].to_i
+  @pax_infant = params[:pax_infant].to_i
   @country = params[:country]
   @language = params[:language]
   @deeplink = "http://www.cathaypacific.com/wdsibe/IBEFacade?ACTION=SINGLECITY_SEARCH&FLEXIBLEDATE=true&BOOKING_FLOW=REVENUE&ENTRYLANGUAGE=#{@language}&ENTRYPOINT=http%3A%2F%2Fwww.qunar.com&ENTRYCOUNTRY=#{@country}&RETURNURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ERRORURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ORIGIN=#{@origin}&DESTINATION=#{@destination}&DEPARTUREDATE=#{@date_departure}&ARRIVALDATE=#{@date_return}&TRIPTYPE=#{@trip_type}&CABINCLASS=#{@cabin}&ADULT=#{@pax_adult}&CHILD=#{@pax_child}&INFANT=#{@pax_infant}"
@@ -54,9 +54,9 @@ post '/mailer' do
   @date_return = params[:date_return].gsub('-','')
   @cabin = params[:cabin]
   @trip_type = params[:trip_type] || "R"
-  @pax_adult = params[:pax_adult]
-  @pax_child = params[:pax_child]
-  @pax_infant = params[:pax_infant]
+  @pax_adult = params[:pax_adult].to_i
+  @pax_child = params[:pax_child].to_i
+  @pax_infant = params[:pax_infant].to_i
   @country = params[:country]
   @language = params[:language]
   @deeplink = "http://www.cathaypacific.com/wdsibe/IBEFacade?ACTION=SINGLECITY_SEARCH&FLEXIBLEDATE=true&BOOKING_FLOW=REVENUE&ENTRYLANGUAGE=#{@language}&ENTRYPOINT=http%3A%2F%2Fwww.qunar.com&ENTRYCOUNTRY=#{@country}&RETURNURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ERRORURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ORIGIN=#{@origin}&DESTINATION=#{@destination}&DEPARTUREDATE=#{@date_departure}&ARRIVALDATE=#{@date_return}&TRIPTYPE=#{@trip_type}&CABINCLASS=#{@cabin}&ADULT=#{@pax_adult}&CHILD=#{@pax_child}&INFANT=#{@pax_infant}"
