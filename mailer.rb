@@ -1,21 +1,38 @@
+require 'bundler/setup'
 require 'sinatra'
-require 'net/smtp'
+require 'pony'
+Pony.options = { :from => 'news@cathaypacific.com', :via => :smtp, :via_options => {
+    :address        => 'mailtrap.io',
+    :port           => '2525',
+    :user_name      => '30203e90b0e47a600',
+    :password       => '04ac6b5291528c',
+    :authentication => :cram_md5, # :plain, :login, :cram_md5, no auth by default
+    :domain         => "mailtrap.io" # the HELO domain provided by the client to the server
+  } }
 
-get '/mailer' do
+# Pony.options = { :from => 'news@cathaypacific.com', :via => :smtp, :via_options => {
+#     :address        => 'smtp.gmail.com',
+#     :port           => '587',
+#     :enable_starttls_auto => true,
+#     :user_name      => 'ecxmtl@gmail.com',
+#     :password       => 'Qqweasdzxc123*',
+#     :authentication => :plain, # :plain, :login, :cram_md5, no auth by default
+#     :domain         => "localhost" # the HELO domain provided by the client to the server
+#   } }
 
-  message = <<-END.split("\n").map!(&:strip).join("\n")
-  From: Private Person <from@mailtrap.io>
-  To: A Test User <to@mailtrap.io>
-  Subject: Hello world!
 
-  This is a test message from audience stream.
-  END
+get '/' do
+  erb :index
+end
 
-  Net::SMTP.start('mailtrap.io',
-                2525,
-                'mailtrap.io',
-                '30203e90b0e47a600', '04ac6b5291528c', :cram_md5) do |smtp|
-  smtp.send_message message, 'to@mailtrap.io',
-                             'from@mailtrap.io'
-  end
+get '/mailer*' do
+  result = Pony.mail(:to => "ecxmtl@gmail.com",
+                :subject => "Thanks for signing my guestbook, ",
+                :html_body => erb(:template))
+  puts result
+  
+end
+
+get '/template' do 
+  erb(:template)
 end
