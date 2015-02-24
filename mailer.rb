@@ -31,8 +31,8 @@ end
 get '/mailer*' do
   @destination = params[:destination]
   @origin = params[:origin]
-  @departure_date = params[:date_departure]
-  @return_date = params[:date_return]
+  @date_departure = params[:date_departure]
+  @date_return = params[:date_return]
   @cabin = params[:cabin]
   
   Pony.mail(:to => "ecxmtl@gmail.com", 
@@ -43,8 +43,8 @@ end
 post '/mailer' do
   @destination = params[:destination]
   @origin = params[:origin]
-  @departure_date = params[:date_departure]
-  @return_date = params[:date_return]
+  @date_departure = params[:date_departure]
+  @date_return = params[:date_return]
   @cabin = params[:cabin]
   
   Pony.mail(:to => "ecxmtl@gmail.com", 
