@@ -1,14 +1,17 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'pony'
-Pony.options = { :from => 'news@cathaypacific.com', :via => :smtp, :via_options => {
-    :address        => 'mailtrap.io',
-    :port           => '2525',
-    :user_name      => '30203e90b0e47a600',
-    :password       => '04ac6b5291528c',
-    :authentication => :cram_md5, # :plain, :login, :cram_md5, no auth by default
-    :domain         => "mailtrap.io" # the HELO domain provided by the client to the server
-  } }
+
+Pony.options = {:from => 'news@cathaypacific.com', 
+                :via => :smtp, :via_options => {
+                :address        => 'mailtrap.io',
+                :port           => '2525',
+                :user_name      => '30203e90b0e47a600',
+                :password       => '04ac6b5291528c',
+                :authentication => :cram_md5, # :plain, :login, :cram_md5, no auth by default
+                :domain         => "mailtrap.io" # the HELO domain provided by the client to the server
+                }
+               }
 
 # Pony.options = { :from => 'news@cathaypacific.com', :via => :smtp, :via_options => {
 #     :address        => 'smtp.gmail.com',
@@ -26,11 +29,13 @@ get '/' do
 end
 
 get '/mailer*' do
-  result = Pony.mail(:to => "ecxmtl@gmail.com",
-                :subject => "Make a booking now",
-                :html_body => erb(:template))
-  puts result
-  
+  Pony.mail(:to => "ecxmtl@gmail.com", :subject => "Make a booking now", :html_body => erb(:template))
+end
+
+post '/mailer' do
+  Pony.mail(:to => "ecxmtl@gmail.com", 
+            :subject => "Make a booking now - From #{params[:origin]} to #{params[:destination]}", 
+            :html_body => erb(:template))
 end
 
 get '/template' do 
