@@ -33,8 +33,14 @@ get '/mailer*' do
 end
 
 post '/mailer' do
+  @destination = parmas[:destination]
+  @origin = params[:origin]
+  @departure_date = params[:departure_date]
+  @return_date = params[:return_date]
+  @cabin = params[:cabin]
+  
   Pony.mail(:to => "ecxmtl@gmail.com", 
-            :subject => "Make a booking now - From #{params[:origin]} to #{params[:destination]}", 
+            :subject => "Make a booking now - from #{@origin} to #{@destination}", 
             :html_body => erb(:template))
 end
 
