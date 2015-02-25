@@ -41,9 +41,9 @@ get '/mailer*' do
   @country = params[:country]
   @language = params[:language]
   @tier = params[:tier]
-  @asia_miles = params[:asia_miles]
-  @club_sectors = params[:club_sectors]
-  @club_miles = params[:club_miles]
+  @asia_miles = params[:asia_miles].to_i
+  @club_sectors = params[:club_sectors].to_i
+  @club_miles = params[:club_miles].to_i
   @title = params[:title]
   @first_name = params[:first_name]
   @deeplink = "http://www.cathaypacific.com/wdsibe/IBEFacade?ACTION=SINGLECITY_SEARCH&FLEXIBLEDATE=true&BOOKING_FLOW=REVENUE&ENTRYLANGUAGE=#{@language}&ENTRYPOINT=http%3A%2F%2Fwww.qunar.com&ENTRYCOUNTRY=#{@country}&RETURNURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ERRORURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ORIGIN=#{@origin}&DESTINATION=#{@destination}&DEPARTUREDATE=#{@date_departure}&ARRIVALDATE=#{@date_return}&TRIPTYPE=#{@trip_type}&CABINCLASS=#{@cabin}&ADULT=#{@pax_adult}&CHILD=#{@pax_child}&INFANT=#{@pax_infant}"
@@ -69,7 +69,7 @@ post '/mailer' do
   @asia_miles = params[:asia_miles]
   @club_sectors = params[:club_sectors]
   @club_miles = params[:club_miles]
-  @title = params[:title]
+  @title = params[:title].capitalize
   @first_name = params[:first_name]
   @deeplink = "http://www.cathaypacific.com/wdsibe/IBEFacade?ACTION=SINGLECITY_SEARCH&FLEXIBLEDATE=true&BOOKING_FLOW=REVENUE&ENTRYLANGUAGE=#{@language}&ENTRYPOINT=http%3A%2F%2Fwww.qunar.com&ENTRYCOUNTRY=#{@country}&RETURNURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ERRORURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ORIGIN=#{@origin}&DESTINATION=#{@destination}&DEPARTUREDATE=#{@date_departure}&ARRIVALDATE=#{@date_return}&TRIPTYPE=#{@trip_type}&CABINCLASS=#{@cabin}&ADULT=#{@pax_adult}&CHILD=#{@pax_child}&INFANT=#{@pax_infant}"
   
