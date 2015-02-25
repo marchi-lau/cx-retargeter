@@ -169,21 +169,21 @@
                               
                                 <thead>
                                 <tr>
-                                    <th colspan="4" style="font-size: 11px; background:#878a80; padding-left:8px;  color:#FFF;height:30px;vertical-align: middle; font-weight:normal; text-align:left ">MarcoPolo Silver Member</th>
+                                    <th colspan="4" style="font-size: 11px; background:#878a80; padding-left:8px;  color:#FFF;height:30px;vertical-align: middle; font-weight:normal; text-align:left ">MarcoPolo <%= @tier%> Member</th>
                                 </tr>
                                
                                 <tr>
                                     <th nowrap style="font-size: 11px; font-weight:normal; text-align:left; padding: 5px 3px 0px 3px">Renewal date</th>
-                                    <th nowrap style="font-size: 11px; font-weight:normal; text-align:left;padding: 5px 3px 0px 3px">Club Mles</th>
+                                    <th nowrap style="font-size: 11px; font-weight:normal; text-align:left;padding: 5px 3px 0px 3px">Club Miles</th>
                                     <th nowrap style="font-size: 11px; font-weight:normal; text-align:left;padding: 5px 3px 0px 3px">Sectors</th>
                                     <th nowrap style="font-size: 11px; font-weight:normal; text-align:left;padding: 5px 3px 0px 3px">Asia Miles</th>
                                 </tr>
                                 </thead>
                                 <tbody><tr>
                                     <td nowrap style="font-size: 11px;padding: 5px 3px 0px 3px;text-align:left">14 Dec 2015</td>
-                                    <td nowrap style="font-size: 11px;padding: 5px 3px 0px 3px;text-align:left">42,000</td>
-                                    <td nowrap style="font-size: 11px;padding: 5px 3px 0px 3px;text-align:left">24</td>
-                                    <td nowrap style="font-size: 11px;padding: 5px 3px 0px 3px;text-align:left">1,000,000</td>
+                                    <td nowrap style="font-size: 11px;padding: 5px 3px 0px 3px;text-align:left"><%= @club_miles%></td>
+                                    <td nowrap style="font-size: 11px;padding: 5px 3px 0px 3px;text-align:left"><%= @club_sectors%></td>
+                                    <td nowrap style="font-size: 11px;padding: 5px 3px 0px 3px;text-align:left"><%= @asia_miles%></td>
                                 </tr></tbody>       
                            
                             </table>
@@ -243,7 +243,7 @@
          <tr><td width="100%" valign="top"  style="background:#fff" align="center">
             <table width="620" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" align="center">
                 <tr><td style="font-size:13px; padding:25px 10px; text-align:left;">
-             <span style="font-size:15px;">Dear Mr.Lau,</span>
+             <span style="font-size:15px;">Dear <%= @title%>. <%= @first_name %>,</span>
              <br /><br />
              It looks like you were planning a trip to London and you didnt't get a chance to finish the order.
              <br /><br />
