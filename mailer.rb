@@ -85,8 +85,22 @@ post '/mailer' do
   @asia_miles = params[:asia_miles]
   @club_sectors = params[:club_sectors]
   @club_miles = params[:club_miles]
-  @title = params[:title].capitalize
+  @title = params[:title]
   @first_name = params[:first_name]
+  @airports = JSON.parse(HTTParty.get("http://assets.cathaypacific.com/json/destinations/airports.json").body)['airports']
+  @destination_name = @airports.select{|airport| airport['airportCode'] == @destination}[0]['airportDetails']['city']['name']
+
+  puts @url = "http://www.cathaypacific.com/cx/en_HK/destinations/things-to-do-in-#{@destination_name.downcase.gsub(' ','-')}.html"
+  html = Nokogiri::HTML(open(@url))
+  @image_left = 'http://www.cathaypacific.com' + html.css("div.item")[1].at_css("img")['src']
+  @title_left = html.css("div.item")[1].at_css("div.title").text
+  @intro_left = html.css("div.item")[1].at_css("div.intro").text.strip
+  @category_left = html.css("div.item")[1].at_css("div.category").text
+  @image_right = 'http://www.cathaypacific.com' + html.css("div.item")[0].at_css("img")['src']
+  @title_right = html.css("div.item")[0].at_css("div.title").text
+  @category_right = html.css("div.item")[0].at_css("div.category").text
+  @intro_right = html.css("div.item")[0].at_css("div.intro").text.strip
+
   @deeplink = "http://www.cathaypacific.com/wdsibe/IBEFacade?ACTION=SINGLECITY_SEARCH&FLEXIBLEDATE=true&BOOKING_FLOW=REVENUE&ENTRYLANGUAGE=#{@language}&ENTRYPOINT=http%3A%2F%2Fwww.qunar.com&ENTRYCOUNTRY=#{@country}&RETURNURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ERRORURL=http://www.cathaypacific.com:80/cx/en_US/_jcr_content.handler.html&ORIGIN=#{@origin}&DESTINATION=#{@destination}&DEPARTUREDATE=#{@date_departure}&ARRIVALDATE=#{@date_return}&TRIPTYPE=#{@trip_type}&CABINCLASS=#{@cabin}&ADULT=#{@pax_adult}&CHILD=#{@pax_child}&INFANT=#{@pax_infant}"
   
   Pony.mail(:to => "ecxmtl@gmail.com", 
