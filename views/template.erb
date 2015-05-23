@@ -375,12 +375,12 @@
         <tr><td width="100%" valign="top"  style="background:#eceeed" align="center">
              <table width="620" border="0" cellpadding="0" cellspacing="0" class="deviceWidth" align="center">
                 <tr><td style="padding:25px 10px 15px 10px; text-align:left;">
-                    <h1 style="color:#296563; font-size:30px; margin:0; padding-bottom:15px; font-weight:normal;display:block; clear:both">Ideas for &lt;destination&gt; </h1>
+                    <h1 style="color:#296563; font-size:30px; margin:0; padding-bottom:15px; font-weight:normal;display:block; clear:both">Ideas for <%= @destination_name %> </h1>
                     <br>
                     <!-- idea 1 start-->
                     <table width="48%" border="0" cellpadding="0" cellspacing="0" align="left" class="deviceWidth" style="float:left">
                         <tr><td class="idea-img">
-                            <a style="border:0" href='#'><img style="border-style: none" src="http://downloads.cathaypacific.com/edm/templates/retarget/ideas-1.jpg" width="288" /></a>
+                            <a style="border:0" href='#'><img style="border-style: none" src="<%= @image_left%>" width="288" /></a>
                          
                         </td></tr>   
                           <tr><td style="background:#FFF; padding:10px 15px; height:145px; vertical-align:top">
@@ -388,10 +388,10 @@
                                   SEE  
                                 </td></tr>  
                                 <tr><td style="background:#FFF; padding:5px 0; color:#296563; font-size:22px; vertical-align:middle">
-                                  <a href="#" style="color:#008091;text-decoration: none">Spitalfields markets  </a>
+                                  <a href="#" style="color:#008091;text-decoration: none"><%= @title_left %>  </a>
                                 </td></tr>  
                                  <tr><td style="background:#FFF; padding:5px 0  ; vertical-align:top; line-height:1.2;font-size:13px">
-                                  Spitalfields Market and Old Spitalfields Market London. An edectic range of markets, shops and restaurants to enjoy.
+                                  <%= @intro_left%>
                                 </td></tr>
                             </table>
                         </td></tr>
@@ -404,17 +404,17 @@
                     <table width="48%" border="0" cellpadding="0" cellspacing="0" align="right" class="deviceWidth" style="float:left">
                          <tr><td   class="idea-img">
                              <a style="border:0" href='#' >
-                             <img style="border-style: none" src="http://downloads.cathaypacific.com/edm/templates/retarget/ideas-2.jpg" width="288" /></a>
+                             <img style="border-style: none" src="<%= @image_right%>" width="288" /></a>
                         </td></tr>   
                           <tr><td style="background:#FFF; padding:10px 15px; height:145px; vertical-align:top">
                               <table><tr><td style="vertical-align:middle ;padding:5px 0;">
                                   DRINK  
                                 </td></tr>  
                                 <tr><td style="background:#FFF; padding:5px 0; color:#296563; font-size:22px; vertical-align:middle">
-                                  <a href="#" style="color:#008091;text-decoration: none">Well and Bucket </a>
+                                  <a href="#" style="color:#008091;text-decoration: none"><%= @title_right %> </a>
                                 </td></tr>  
                                  <tr><td style="background:#FFF; padding:5px 0  ; vertical-align:top; line-height:1.2; font-size:13px">
-                                  Beautiful beer, extraordinary oysters, splendid sliders and a little secret down below. 
+                                  <%= @intro_right %>
                                 </td></tr>
                             </table>
                         </td></tr>
@@ -423,7 +423,7 @@
                     <!-- idea 2 end-->
                  </td></tr>
                  <tr><td style="padding:0 10px;padding-bottom:20px;">
-                     <a href="#" style="padding-right:20px;height:20px; float:right; text-align:right; line-height:22px;color:#008091;text-decoration: none">See more ideas > </a>
+                     <a href="<%= @url %>" style="padding-right:20px;height:20px; float:right; text-align:right; line-height:22px;color:#008091;text-decoration: none">See more ideas > </a>
                 </td></tr>
             </table>
         </td></tr>
