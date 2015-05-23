@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'sinatra'
 require 'pony'
+require 'httparty'
 
 Pony.options = {:from => 'news@cathaypacific.com', 
                 :via => :smtp, :via_options => {
