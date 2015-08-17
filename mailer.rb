@@ -51,6 +51,8 @@ get '/mailer*' do
   @airports = JSON.parse(HTTParty.get("http://assets.cathaypacific.com/json/destinations/airports.json").body)['airports']
   @destination_name = @airports.select{|airport| airport['airportCode'] == @destination}[0]['airportDetails']['city']['name']
 
+ # Preferrably to have an airport_code.html
+ #things-to-do.html?airport=xxx // city=xxx
   puts @url = "http://www.cathaypacific.com/cx/en_HK/destinations/things-to-do-in-#{@destination_name.downcase.gsub(' ','-')}.html"
   html = Nokogiri::HTML(open(@url))
   @image_left = 'http://www.cathaypacific.com' + html.css("div.item")[1].at_css("img")['src']
